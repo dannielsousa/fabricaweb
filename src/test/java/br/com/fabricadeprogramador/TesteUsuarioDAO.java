@@ -6,7 +6,12 @@ import br.com.fabricadeprogramador.persistencia.jdbc.UsuarioDAO;
 public class TesteUsuarioDAO {
 
 	public static void main(String[] args) {
-		
+		//testeCadastrar();
+		//testeAlterar();
+		testeExcluir();
+	}
+	
+	public static void testeCadastrar() {
 		//criando o usuario
 		Usuario usuario = new Usuario();
 		usuario.setNome("Jãozão");
@@ -16,6 +21,34 @@ public class TesteUsuarioDAO {
 		//Cadastrando usuario no banco de dados
 		UsuarioDAO usuDAO = new UsuarioDAO();
 		usuDAO.cadastrar(usuario);
+		
+		System.out.println("Cadastrado com sucesso!");
 	}
 
+	public static void testeAlterar() {
+		//criando o usuario
+		Usuario usuario = new Usuario();
+		usuario.setId(4);
+		usuario.setNome("Jãozão Da Silva");
+		usuario.setLogin("JoãoZão");
+		usuario.setSenha("12345678");
+		
+		//Cadastrando usuario no banco de dados
+		UsuarioDAO usuDAO = new UsuarioDAO();
+		usuDAO.alterar(usuario);
+		
+		System.out.println("Alterado com sucesso!");
+	}
+	
+	public static void testeExcluir() {
+		//criando o usuario
+		Usuario usuario = new Usuario();
+		usuario.setId(4);
+		
+		//Excluir usuario no banco de dados
+		UsuarioDAO usuDAO = new UsuarioDAO();
+		usuDAO.excluir(usuario);
+		
+		System.out.println("Excluido com sucesso!");
+	}
 }
