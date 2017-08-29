@@ -8,7 +8,8 @@ public class TesteUsuarioDAO {
 	public static void main(String[] args) {
 		//testeCadastrar();
 		//testeAlterar();
-		testeExcluir();
+		//testeExcluir();
+		testeSalvar();
 	}
 	
 	public static void testeCadastrar() {
@@ -50,5 +51,18 @@ public class TesteUsuarioDAO {
 		usuDAO.excluir(usuario);
 		
 		System.out.println("Excluido com sucesso!");
+	}
+	
+	public static void testeSalvar() {
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		usuario.setNome("Maria de Nazaré");
+		usuario.setLogin("MariaNa");
+		usuario.setSenha("123");
+		
+		UsuarioDAO usuarioDao = new UsuarioDAO();
+		usuarioDao.salvar(usuario);
+		
+		System.out.println("Usuário Salvo");
 	}
 }
