@@ -1,5 +1,7 @@
 package br.com.fabricadeprogramador;
 
+import java.util.List;
+
 import br.com.fabricadeprogramador.persistencia.entidade.Usuario;
 import br.com.fabricadeprogramador.persistencia.jdbc.UsuarioDAO;
 
@@ -9,14 +11,47 @@ public class TesteUsuarioDAO {
 		//testeCadastrar();
 		//testeAlterar();
 		//testeExcluir();
-		testeSalvar();
+		//testeSalvar();
+		//testeBuscarPorId();
+		//testeBuscarTodos();
+		
+		testeAutenticar();
+		
 	}
 	
+	private static void testeAutenticar() {
+		
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		
+		Usuario usu = new Usuario();
+		usu.setLogin("jao");
+		usu.setSenha("123");
+		
+		Usuario usuRetorno = usuarioDAO.autenticar(usu);
+		
+		System.out.println(usuRetorno);
+	}
+
+	private static void testeBuscarTodos() {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		List<Usuario> usuarioList = usuarioDAO.bustarTodos();
+		
+		for (Usuario u: usuarioList) {
+			System.out.println(u);
+		}
+	}
+	
+	private static void testeBuscarPorId() {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		Usuario usuario = usuarioDAO.buscarPorId(1);
+		System.out.println(usuario);
+	}
+
 	public static void testeCadastrar() {
 		//criando o usuario
 		Usuario usuario = new Usuario();
-		usuario.setNome("Jãozão");
-		usuario.setLogin("jzao");
+		usuario.setNome("MIMI");
+		usuario.setLogin("mi");
 		usuario.setSenha("123");
 		
 		//Cadastrando usuario no banco de dados
